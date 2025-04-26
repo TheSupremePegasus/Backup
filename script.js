@@ -1,52 +1,44 @@
-// Open popup
-function openForm() {
-  document.getElementById("formPopup").style.display = "block";
-}
+const form = document.getElementById('nominationForm');
+const nomineeInput = document.getElementById('nominee');
+const deedInput = document.getElementById('deed');
+const submissionList = document.getElementById('submissionList');
+const popupList = document.getElementById('popupList');
+const viewSubmissionsBtn = document.getElementById('viewSubmissions');
+const popup = document.getElementById('popup');
+const closePopup = document.getElementById('closePopup');
+const submissionsSection = document.getElementById('submissions');
 
-// Close popup
-function closeForm() {
-  document.getElementById("formPopup").style.display = "none";
-}
-
-// Submit nomination
-function submitNomination() {
-  const yourName = document.getElementById('yourName').value.trim();
-  const friendName = document.getElementById('friendName').value.trim();
-
-  if (yourName !== "" && friendName !== "") {
-    saveNomination(yourName, friendName);
-    document.getElementById('yourName').value = "";
-    document.getElementById('friendName').value = "";
-    closeForm();
-  } else {
-    alert("Please fill in both fields!");
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const nominee = nomineeInput.value.trim();
+  const deed = deedInput.value.trim();
+  
+  if (nominee && deed) {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${nominee} - "${deed}"`;
+    
+    submissionList.appendChild(listItem);
+    popupList.appendChild(listItem.cloneNode(true));
+    
+    nomineeInput.value = '';
+    deedInput.value = '';
+    
+    submissionsSection.style.display = 'block';
   }
-}
+});
 
-// Save to Firebase
-function saveNomination(yourName, friendName) {
-  const nominationsRef = firebase.database().ref('nominations');
-  nominationsRef.push({
-    yourName: yourName,
-    friendName: friendName
-  });
-}
+viewSubmissionsBtn.addEventListener('click', () => {
+  popup.style.display = 'flex';
+});
 
-// Load nominations
-function loadNominations() {
-  const nominationsRef = firebase.database().ref('nominations');
-  nominationsRef.on('value', (snapshot) => {
-    const nominationsList = document.getElementById('nominationsList');
-    nominationsList.innerHTML = '';
+closePopup.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
 
-    snapshot.forEach((childSnapshot) => {
-      const nomination = childSnapshot.val();
-      const li = document.createElement('li');
-      li.textContent = `${nomination.yourName} nominated ${nomination.friendName}`;
-      nominationsList.appendChild(li);
-    });
-  });
-}
-
-// Load nominations on page load
-window.onload = loadNominations;
+// Close popup if clicked outside
+window.addEventListener('click', (e) => {
+  if (e.target === popup) {
+    popup.style.display = 'none';
+  }
+});
