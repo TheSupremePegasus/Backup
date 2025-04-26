@@ -2,37 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kindness Challenge</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #4CAF50;
+      font-size: 3em;
+    }
+    p {
+      font-size: 1.2em;
+      color: #555;
+    }
+    main {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: 8px;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #777;
+    }
+    footer p {
+      font-size: 1em;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="fade-in">Kindness Challenge</h1>
-    <p class="fade-in">Nominate someone to do a good deed and spread kindness!</p>
 
-    <form id="nominationForm" class="fade-in">
-      <input type="text" id="nominee" placeholder="Nominee's Name" required>
-      <input type="text" id="deed" placeholder="Good Deed" required>
-      <button type="submit">Submit Nomination</button>
-    </form>
+  <header>
+    <h1>Join the Kindness Challenge</h1>
+    <p>Nominate someone to perform a good deed and spread kindness!</p>
+  </header>
 
-    <button id="viewSubmissions" class="fade-in">View Live Submissions</button>
+  <main>
+    <h2>Submit Your Nomination</h2>
+    <!-- Google Form embedded here -->
+    <iframe src="https://docs.google.com/forms/d/e/1Ft_ow8mRC4ZeJn2zD9CmsnuzICAItFsnzLPeMoAK9ZU/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </main>
 
-    <div id="submissions" class="fade-in">
-      <h2>Live Nominations</h2>
-      <ul id="submissionList"></ul>
-    </div>
-  </div>
+  <footer>
+    <p>&copy; 2025 Kindness Challenge. All rights reserved.</p>
+  </footer>
 
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span id="closePopup">&times;</span>
-      <h2>Live Nominations</h2>
-      <ul id="popupList"></ul>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
