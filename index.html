@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Kindness Challenge</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR-REAL-API-KEY",
+  authDomain: "your-project-id.firebaseapp.com",
+  databaseURL: "https://your-project-id.firebaseio.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project-id.appspot.com",
+  messagingSenderId: "your-sender-id",
+  appId: "your-app-id"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+</script>
+
+<script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MCSTHackathonChallenge</div>
+</header>
+
+<section class="hero">
+  <h1>The Kindness Challenge, Like the Ice Bucket Challenge, but better.</h1>
+  <p>Nominate your friends, spread kindness, change the world.</p>
+  <button onclick="openForm()">Are you up for the challenge?</button>
+</section>
+
+<div class="scroll-banner">
+  <span>Be Kind. Spread Love. Make Change. Be Kind. Spread Love. Make Change. Be Kind. Spread Love. Make Change.</span>
+</div>
+
+<!-- Popup Form -->
+<div class="popup-form" id="formPopup">
+  <button class="close-btn" onclick="closeForm()">X</button>
+  <h2>Sign Your Kindness</h2>
+  <input type="text" id="yourName" placeholder="Your Name">
+  <input type="text" id="friendName" placeholder="Your Friend's Name">
+  <button onclick="submitNomination()">Submit</button>
+</div>
+
+<!-- Nominations List -->
+<section class="nominations-section">
+  <h2>All Nominations</h2>
+  <ul id="nominationsList"></ul>
+</section>
+
+</body>
+</html>
