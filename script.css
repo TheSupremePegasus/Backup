@@ -10,6 +10,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 .container {
   background: white;
   padding: 2rem;
@@ -20,6 +22,7 @@ body {
   text-align: center;
   animation: fadeIn 2s ease forwards;
 }
+
 
 h1, p, h2 {
   margin: 0.5rem 0;
@@ -40,6 +43,7 @@ input, button {
   transition: all 0.4s ease;
 }
 
+
 input:focus, button:hover {
   outline: none;
   border-color: #4d91ff;
@@ -56,6 +60,7 @@ button {
   margin-top: 2rem;
   display: none;
 }
+
 
 #submissions ul {
   list-style: none;
@@ -84,6 +89,8 @@ button {
   to { opacity: 1; transform: translateY(0); }
 }
 
+
+
 /* Popup styling */
 .popup {
   position: fixed;
@@ -106,6 +113,7 @@ button {
   width: 80%;
   max-width: 400px;
 }
+
 
 #closePopup {
   position: absolute;
