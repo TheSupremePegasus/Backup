@@ -1,170 +1,116 @@
-/* ====== Base Styles ====== */
 body {
-    margin: 0;
-    font-family: 'Poppins', 'Arial Narrow', Arial, sans-serif;
-    background: black url('https://images.unsplash.com/photo-1612831667043-e6c3614a2a16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
-    color: #e7e2d7;
-    text-align: center;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* ====== Header ====== */
-header {
-    width: 100%;
-    padding: 30px 60px;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  animation: fadeIn 2s ease forwards;
 }
 
-.logo {
-    font-size: 36px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    color: #ff6f91;
+h1, p, h2 {
+  margin: 0.5rem 0;
 }
 
-/* ====== Hero Section ====== */
-.hero {
-    margin-top: 160px;
-    padding: 120px 30px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
-.hero h1 {
-    font-size: 60px;
-    margin-bottom: 30px;
-    line-height: 1.2;
+input, button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid #66a6ff;
+  border-radius: 8px;
+  transition: all 0.4s ease;
 }
 
-.hero p {
-    font-size: 26px;
-    margin-bottom: 50px;
-    color: #e7e2d7;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+input:focus, button:hover {
+  outline: none;
+  border-color: #4d91ff;
+  box-shadow: 0 0 10px #66a6ff;
 }
 
-.hero button {
-    font-size: 24px;
-    padding: 18px 40px;
-    background: linear-gradient(90deg, #ff6f91, #ff9671);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+button {
+  background-color: #66a6ff;
+  color: white;
+  cursor: pointer;
 }
 
-.hero button:hover {
-    background: linear-gradient(90deg, #ff9671, #ff6f91);
-    transform: scale(1.1);
+#submissions {
+  margin-top: 2rem;
+  display: none;
 }
 
-/* ====== Popup Form ====== */
-.popup-form {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    color: black;
-    padding: 40px 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.7);
-    z-index: 2000;
-    width: 300px;
+#submissions ul {
+  list-style: none;
+  padding: 0;
 }
 
-.popup-form input {
-    width: 90%;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+#submissions li {
+  background: #f0f8ff;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  animation: fadeSlideIn 0.5s ease forwards;
 }
 
-.popup-form button {
-    background-color: black;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 16px;
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
 }
 
-.close-btn {
-    background-color: red;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 50%;
-    font-size: 16px;
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
-/* ====== Scrolling Banner ====== */
-.scroll-banner {
-    width: 100%;
-    overflow: hidden;
-    background-color: #111;
-    white-space: nowrap;
-    box-sizing: border-box;
-    position: relative;
-    padding: 14px 0;
-    margin-top: 60px;
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.scroll-banner span {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll-left 12s linear infinite;
-    font-size: 24px;
-    color: #ff9671;
-    font-weight: 500;
+/* Popup styling */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease forwards;
 }
 
-@keyframes scroll-left {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  width: 80%;
+  max-width: 400px;
 }
 
-/* ====== Nominations Section ====== */
-.nominations-section {
-    margin: 100px auto;
-    padding: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    max-width: 600px;
-}
-
-.nominations-section h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #ff9671;
-}
-
-.nominations-section ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.nominations-section li {
-    background: #222;
-    color: #fff;
-    margin: 12px 0;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 18px;
+#closePopup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
