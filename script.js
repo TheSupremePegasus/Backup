@@ -8,8 +8,10 @@ const popup = document.getElementById('popup');
 const closePopup = document.getElementById('closePopup');
 const submissionsSection = document.getElementById('submissions');
 
+
 // Load previous submissions from localStorage on page load
 document.addEventListener('DOMContentLoaded', loadSubmissions);
+
 
 function loadSubmissions() {
   const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
@@ -51,10 +53,12 @@ form.addEventListener('submit', (e) => {
     nomineeInput.value = '';
     deedInput.value = '';
 
+
     // Show submissions section if it's the first submission
     submissionsSection.style.display = 'block';
   }
 });
+
 
 viewSubmissionsBtn.addEventListener('click', () => {
   popup.style.display = 'flex';
@@ -63,6 +67,8 @@ viewSubmissionsBtn.addEventListener('click', () => {
 closePopup.addEventListener('click', () => {
   popup.style.display = 'none';
 });
+
+
 
 // Close popup if clicked outside
 window.addEventListener('click', (e) => {
